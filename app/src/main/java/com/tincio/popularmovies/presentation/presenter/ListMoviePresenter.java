@@ -33,8 +33,9 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
 
     @Override
     public void onResponse(ResponseMovies responseMovies, String... mensajes) {
-        view.showListMovies(responseMovies, (mensajes.length>0?mensajes[0]:""));
         view.closeLoading();
+        view.showListMovies(responseMovies, (mensajes.length>0?mensajes[0]:""));
+
     }
 
     public void saveFavoriteMovie(Integer id){
