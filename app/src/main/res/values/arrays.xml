@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="order_movies">
+        <item>@string/order_one</item>
+        <item>@string/order_two</item>
+    </string-array>
+</resources>

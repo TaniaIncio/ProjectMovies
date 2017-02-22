@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_gridlayout"
+    tools:context="com.tincio.popularmovies.presentation.fragment.ListMoviesFragment"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_gridlayout_marginrow"
+        android:layout_marginRight="@dimen/activity_gridlayout_marginrow"
+        android:layout_marginTop="@dimen/activity_gridlayout_marginrow"
+        android:minHeight="?attr/listPreferredItemHeight"
+        android:background="@color/colorPrimary"
+        android:id="@+id/spinner_order_movies">
+    </Spinner>
+    <android.support.v7.widget.RecyclerView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/activity_gridlayout_recycler"
+        tools:listitem="@layout/row_recycler_movies">
+    </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+</FrameLayout>

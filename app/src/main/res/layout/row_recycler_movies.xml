@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/activity_gridlayout_marginrow"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/rowrecyclermovie_img"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/listPreferredItemHeight"
+            android:gravity="center_vertical"
+            android:background="@color/grey_800_trans75"
+            android:layout_alignBottom="@+id/rowrecyclermovie_img">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:padding="@dimen/activity_gridlayout_paddiconfavorito"
+                android:id="@+id/activity_gridlayout_txt"
+                android:textStyle="bold"
+                android:layout_weight="5"
+                android:ellipsize="end"
+                android:lines="2"
+                android:gravity="center_vertical"
+                tools:text="Interestela"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/activity_gridlayout_paddiconfavorito"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_gridlayout_iconfavorito"
+                    android:src="@mipmap/ic_favorite_border_white_24dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

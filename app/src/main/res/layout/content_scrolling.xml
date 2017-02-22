@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_gridlayout"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_400_trans"
+            android:gravity="center"
+            android:minHeight="@dimen/height_subtitule_general"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/height_contentscrolling_listitem"
+                android:layout_marginRight="@dimen/margin_general_right_left"
+                android:id="@+id/contentscrolling_txt_aniomovie"
+                android:visibility="gone"
+                tools:text="2015" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/height_contentscrolling_listitem"
+                android:layout_marginRight="@dimen/margin_general_right_left"
+                android:id="@+id/contentscrolling_txt_timemovie"
+                android:visibility="gone"
+                tools:text="120 min" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/height_contentscrolling_listitem"
+                android:layout_marginRight="@dimen/margin_general_right_left"
+                android:id="@+id/contentscrolling_txt_datemovie"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_800_trans75">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin"
+                android:textColor="@android:color/white"
+                android:id="@+id/contentscrolling_txt_descriptionmovie"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/height_subtitule_general"
+            android:text="@string/fragment_detallemovie_trailers"
+            android:textSize="@dimen/height_contentscrolling_trailers"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/margin_general_right_left"/>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contentscrolling_recycler_trailers"
+            tools:listitem="@layout/row_recycler_detallemovie">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

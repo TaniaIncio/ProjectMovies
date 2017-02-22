@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="fragment_detallemovie_trailers">Trailers</string>
+
+    <!--serializable-->
+
+    <string name="serializable_detailmovie">detailMovie</string>
+    <!--responses-->
+    <string name="response_succesfull">succesfull</string>
+    <string name="response_error">error</string>
+    <!--names of arrays-->
+    <string name="order_one">Most popular</string>
+    <string name="order_two">Highest rated</string>
+    <string name="id_order_one">popular</string>
+    <string name="id_order_two">top_rated</string>
+</resources>

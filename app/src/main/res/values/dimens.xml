@@ -1,0 +1,19 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_gridlayout_paddiconfavorito">16dp</dimen>
+    <dimen name="activity_gridlayout_marginrow">5dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_general_right_left">16dp</dimen>
+
+    <!---dimens material-->
+    <dimen name="height_subtitule_general">48dp</dimen>
+    <dimen name="height_statusbar_general">24dp</dimen>
+    <dimen name="height_lisitem_general">72dp</dimen>
+    <dimen name="height_contentscrolling_image">380dp</dimen>
+
+    <!--sp-->
+    <dimen name="height_contentscrolling_trailers">20sp</dimen>
+    <dimen name="height_contentscrolling_listitem">17sp</dimen>
+</resources>
