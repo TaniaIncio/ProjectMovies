@@ -132,11 +132,12 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
         if (CURRENT_PAGE == 1){
             adapterRecycler = new AdapterRecyclerMovies((responseMovies==null?null:(list==null?responseMovies.getResults():list)));
             recImageMovie.setAdapter(adapterRecycler);
-        }else if (CURRENT_PAGE == 2){
+        }else {//if (CURRENT_PAGE == 2)
             adapterRecycler.setListMovies(list);
-        } else {
-            presenter.showFavoriteMovie();
         }
+        //else {
+            //presenter.showFavoriteMovie();
+        //}
         adapterRecycler.setOnItemClickListener(new AdapterRecyclerMovies.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(Result movie, Integer position) {
