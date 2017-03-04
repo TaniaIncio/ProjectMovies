@@ -1,18 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_login"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+
+android:background="@mipmap/img_fondo"
+tools:context="com.tincio.popularmovies.presentation.activity.LoginActivity">
+
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tincio.popularmovies.presentation.activity.LoginActivity">
-
-    
+    android:layout_height="wrap_content"
+    android:layout_weight="4"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
 
 
+    <!--Boton de Ingreso -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:gravity="bottom">
 
 
-</RelativeLayout>
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:gravity="center">
+
+        <!--Titutlo -->
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:src="@mipmap/icon_movie"/>
+
+        <!-- Usuario -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            android:textColor="@color/naranja"/>
+
+        <EditText
+            android:id="@+id/input_iniciar_sesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+             />
+        <!--android:text="GMSWF\\RRUIZC"-->
+        <!-- Cambiar Contraseña-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:textColor="@color/naranja"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_contrasenia">
+            <EditText
+                android:id="@+id/input_contrasenia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+
+                android:textColor="@color/white"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/terminos_y_condiciones"
+            android:text="Términos y condiciones"
+            android:textColor="@android:color/white"/>
+
+        <!--Olvide contraseña-->
+        <TextView
+            android:id="@+id/txt_recuperar_clave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+
+            android:singleLine="true"
+            android:padding="12dp"
+            android:paddingTop="18dp"
+            android:text="¿Olvidaste tu Contraseña?" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" />
+<android.support.v7.widget.AppCompatButton
+    android:id="@+id/btn_ingreso"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:text="@string/iniciar_sesion"
+    android:textColor="@color/white"
+    android:padding="16dp"
+    android:textAllCaps="false"
+    android:background="@color/colorAccent">
+
+</android.support.v7.widget.AppCompatButton>
+</LinearLayout>
