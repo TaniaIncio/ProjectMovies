@@ -36,30 +36,123 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/height_contentscrolling_listitem"
                 android:layout_marginRight="@dimen/margin_general_right_left"
-                android:id="@+id/contentscrolling_txt_timemovie"
-                android:visibility="gone"
-                tools:text="120 min" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:textSize="@dimen/height_contentscrolling_listitem"
-                android:layout_marginRight="@dimen/margin_general_right_left"
                 android:id="@+id/contentscrolling_txt_datemovie"
-                />
+                android:text="2016-06-16"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_gridlayout_paddiconfavorito"
             android:background="@color/grey_800_trans75">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textColor="@android:color/white"
-                android:id="@+id/contentscrolling_txt_descriptionmovie"
-                />
+                android:id="@+id/contentscrolling_txt_descriptionmovie"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/activity_gridlayout_marginrow"
+                    android:text="Idioma Original:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_movies_1"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/margin_general_right_left"
+                    android:id="@+id/contentscrolling_txt_languagemovie"
+                    tools:text="120 min" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/activity_gridlayout_marginrow"
+                    android:text="Popularidad:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_movies_1"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/margin_general_right_left"
+                    android:id="@+id/contentscrolling_txt_popularitymovie"
+                    tools:text="120 min" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/activity_gridlayout_marginrow"
+                    android:text="Cantidad de votos:" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_movies_1"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/margin_general_right_left"
+                    android:id="@+id/contentscrolling_txt_countvotesmovie"
+                    tools:text="120 min" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/activity_gridlayout_marginrow"
+                    android:text="Promedio de votos:" />
+                <android.support.v7.widget.AppCompatRatingBar
+                    android:id="@+id/appCompatRatingBar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:rating="3.5"
+                    android:layout_marginRight="5dp"
+                    android:theme="@style/RatingBar"
+                    android:layout_gravity="center"
+                    style="?android:attr/ratingBarStyleSmall" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green_movies_1"
+                    android:textStyle="normal"
+                    android:textSize="@dimen/height_contentscrolling_listitem"
+                    android:layout_marginRight="@dimen/margin_general_right_left"
+                    android:id="@+id/contentscrolling_txt_averagevotesmovie"
+                    tools:text="120 min" />
+            </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"

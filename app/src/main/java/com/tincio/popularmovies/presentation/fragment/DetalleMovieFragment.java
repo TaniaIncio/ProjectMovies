@@ -53,6 +53,14 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     ImageView imgMovie;
     @BindView(R.id.contentscrolling_txt_descriptionmovie)
     TextView txtDescripcionMovie;
+    @BindView(R.id.contentscrolling_txt_languagemovie)
+    TextView txtLenguageMovie;
+    @BindView(R.id.contentscrolling_txt_popularitymovie)
+    TextView txtPopularidadMovie;
+    @BindView(R.id.contentscrolling_txt_countvotesmovie)
+    TextView txtCantidadVotosMovie;
+    @BindView(R.id.contentscrolling_txt_averagevotesmovie)
+    TextView txtPromedioVotosMovie;
     @BindView(R.id.contentscrolling_txt_datemovie)
     TextView dateMovie;
     ProgressDialog progress;
@@ -103,6 +111,10 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
             collapsingToolbarLayout.setTitle(detailMovie.getTitle());
             Picasso.with(getActivity()).load(Constants.serviceNames.GET_IMAGE_MOVIES+detailMovie.getBackdropPath()).into(imgMovie);
             txtDescripcionMovie.setText(detailMovie.getOverview());
+            txtLenguageMovie.setText(detailMovie.getOriginalLanguage());
+            txtPopularidadMovie.setText(String.valueOf(detailMovie.getPopularity()));
+            txtCantidadVotosMovie.setText(String.valueOf(detailMovie.getVoteCount()));
+            txtPromedioVotosMovie.setText(String.valueOf(detailMovie.getVoteAverage()));
             dateMovie.setText(detailMovie.getReleaseDate());
             fabAddFavorito.setImageDrawable(Utils.getDrawableByName(getContext(),detailMovie.getFavorito()?favoritoOn:favoritoOff));
             fabAddFavorito.setTag(detailMovie.getFavorito()?favoritoOn:favoritoOff);

@@ -9,4 +9,9 @@
     <color name="grey_400_trans">#BFBDBDBD</color>
     <color name="green_movies">#007362</color>
     <color name="green_movies_dark">#004534</color>
+    <color name="green_movies_1">#ACDA91</color>
+
+    <color name="grayRatingBar">#C6C6C6</color>
+    <color name="yellowRatingBar">#f8c81c</color>
+
 </resources>
