@@ -34,7 +34,12 @@ public class ListMovieInteractor {
 
     public void callListMovies(String option, int page){
         try{
-            getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option, page));
+            if(option.equals(application.getString(R.string.id_order_three))){
+                this.showFavorite();
+            }else{
+                getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option, page));
+            }
+
         }catch(Exception e){
             throw e;
         }
@@ -119,7 +124,7 @@ public class ListMovieInteractor {
         }
     }
 
-    public void ShowFavorite(){
+    public void showFavorite(){
         try{
             Realm realm = application.getRealm();
             realm.beginTransaction();
