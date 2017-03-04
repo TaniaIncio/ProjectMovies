@@ -35,7 +35,11 @@ public class AdapterRecyclerDetailMovie extends RecyclerView.Adapter<AdapterRecy
 
     @Override
     public void onBindViewHolder(ViewHolderItem holder, int position) {
+        String id = listTrailer.get(position).getId().toString();
         holder.txtNombreTrailer.setText("Trailer "+(position+1));
+        holder.txtTituloTrailer.setText(listTrailer.get(position).getName().toString());
+        holder.txtSitioTrailer.setText(listTrailer.get(position).getSite().toString());
+        holder.txtTamanioTrailer.setText(listTrailer.get(position).getSize().toString());
     }
 
     @Override
@@ -49,6 +53,12 @@ public class AdapterRecyclerDetailMovie extends RecyclerView.Adapter<AdapterRecy
         LinearLayout linearLayout;
         @BindView(R.id.rowrecyclerdetalle_txt_nombretrailer)
         TextView txtNombreTrailer;
+        @BindView(R.id.rowrecyclerdetalle_txt_title)
+        TextView txtTituloTrailer;
+        @BindView(R.id.rowrecyclerdetalle_txt_site)
+        TextView txtSitioTrailer;
+        @BindView(R.id.rowrecyclerdetalle_txt_size)
+        TextView txtTamanioTrailer;
 
         public ViewHolderItem(View itemView) {
             super(itemView);

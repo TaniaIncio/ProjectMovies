@@ -22,10 +22,11 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
         view = null;
     }
 
-    public void callListMovie(String option){
+    public void callListMovie(String option, int page){
         try{
-            view.showLoading();
-            movieInteractor.callListMovies(option);
+            if(page == 1)
+                view.showLoading();
+            movieInteractor.callListMovies(option, page);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -38,9 +39,11 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
 
     }
 
-    public void saveFavoriteMovie(Integer id){
-        movieInteractor.saveFavorite(id);
+    public void saveFavoriteMovie(Integer id, String posterPath, String title){
+        movieInteractor.saveFavorite(id, posterPath, title );
     }
+
+
 
     @Override
     public void onResponseFavorite(String mensajes) {

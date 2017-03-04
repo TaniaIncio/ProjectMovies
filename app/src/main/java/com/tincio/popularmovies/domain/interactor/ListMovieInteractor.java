@@ -16,9 +16,11 @@ import com.tincio.popularmovies.presentation.util.Constants;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class ListMovieInteractor {
@@ -30,9 +32,14 @@ public class ListMovieInteractor {
         this.callback = callback;
     }
 
-    public void callListMovies(String option){
+    public void callListMovies(String option, int page){
         try{
-            getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option));
+            if(option.equals(application.getString(R.string.id_order_three))){
+                this.showFavorite();
+            }else{
+                getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option, page));
+            }
+
         }catch(Exception e){
             throw e;
         }
@@ -92,7 +99,7 @@ public class ListMovieInteractor {
 
     //for favorite
 
-    public void saveFavorite(Integer id){
+    public void  saveFavorite(Integer id, String posterPath, String title){
         try{
             Realm realm = application.getRealm();
             realm.beginTransaction();
@@ -103,10 +110,40 @@ public class ListMovieInteractor {
                 MovieRealm movieRealm = new MovieRealm();
                 movieRealm.setFavorite(true);
                 movieRealm.setId(id);
+                movieRealm.setPosterPath(posterPath);
+                movieRealm.setTitle(title);
+                //titulo
+                //posterpath
                 realm.copyToRealm(movieRealm);
             }
             realm.commitTransaction();
             callback.onResponseFavorite(application.getString(R.string.response_succesfull));
+        }catch(Exception e){
+            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
+            //  throw e;
+        }
+    }
+
+    public void showFavorite(){
+        try{
+            Realm realm = application.getRealm();
+            realm.beginTransaction();
+            RealmResults<MovieRealm> movieSelection = realm.where(MovieRealm.class).findAll();
+            realm.commitTransaction();
+            ResponseMovies responseMovies = new ResponseMovies();
+            List<Result> lista = new ArrayList<>();
+            Result mResult;
+            for (MovieRealm movie : movieSelection){
+                mResult = new Result();
+                mResult.setId(movie.getId());
+                mResult.setPosterPath(movie.getPosterPath());
+                mResult.setTitle(movie.getTitle());
+                lista.add(mResult);
+            }
+            responseMovies.setResults(lista);
+            callback.onResponse(checkFavoriteInList(responseMovies));
+
+
         }catch(Exception e){
             callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
             //  throw e;
