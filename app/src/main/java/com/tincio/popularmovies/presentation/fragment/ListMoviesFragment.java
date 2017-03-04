@@ -85,7 +85,6 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
             recImageMovie.addOnScrollListener(new EndlessRecyclerOnScrollListener(gridLayoutManager) {
                 @Override
                 public void onLoadMore(int current_page) {
-                    Log.v(TAG + "currentpage", "currentpage " + current_page);
                     CURRENT_PAGE  = current_page;
                     if(!OPTION.equals(getString(R.string.id_order_three))){
                         presenter.callListMovie(OPTION,current_page);
@@ -134,12 +133,9 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
         if (CURRENT_PAGE == 1){
             adapterRecycler = new AdapterRecyclerMovies((responseMovies==null?null:(list==null?responseMovies.getResults():list)));
             recImageMovie.setAdapter(adapterRecycler);
-        }else {//if (CURRENT_PAGE == 2)
+        }else {
             adapterRecycler.setListMovies(list);
         }
-        //else {
-            //presenter.showFavoriteMovie();
-        //}
         adapterRecycler.setOnItemClickListener(new AdapterRecyclerMovies.OnItemClickListener() {
             @Override
             public void setOnItemClickListener(Result movie, Integer position) {
