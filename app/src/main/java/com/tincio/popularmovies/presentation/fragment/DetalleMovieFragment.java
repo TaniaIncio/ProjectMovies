@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -59,6 +60,8 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     TextView txtPopularidadMovie;
     @BindView(R.id.contentscrolling_txt_countvotesmovie)
     TextView txtCantidadVotosMovie;
+//    @BindView(R.id.appCompatRatingBar2)
+//    AppCompatRatingBar txtValoracionMovie;
     @BindView(R.id.contentscrolling_txt_averagevotesmovie)
     TextView txtPromedioVotosMovie;
     @BindView(R.id.contentscrolling_txt_datemovie)
@@ -114,6 +117,7 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
             txtLenguageMovie.setText(detailMovie.getOriginalLanguage());
             txtPopularidadMovie.setText(String.valueOf(detailMovie.getPopularity()));
             txtCantidadVotosMovie.setText(String.valueOf(detailMovie.getVoteCount()));
+            //txtValoracionMovie.setRating(Float.valueOf(detailMovie.getVoteAverage().toString()));
             txtPromedioVotosMovie.setText(String.valueOf(detailMovie.getVoteAverage()));
             dateMovie.setText(detailMovie.getReleaseDate());
             fabAddFavorito.setImageDrawable(Utils.getDrawableByName(getContext(),detailMovie.getFavorito()?favoritoOn:favoritoOff));
