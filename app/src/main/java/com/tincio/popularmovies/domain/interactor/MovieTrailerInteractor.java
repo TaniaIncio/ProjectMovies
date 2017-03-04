@@ -38,11 +38,12 @@ public class MovieTrailerInteractor {
 
     public void getMovieTrailers(Integer id){
         try{
-            getRequesListMovies(Constants.serviceNames.GET_TRAILERS(id));
+                getRequesListMovies(Constants.serviceNames.GET_TRAILERS(id));
         }catch(Exception e){
             throw e;
         }
     }
+
 
     void getRequesListMovies(String url) {
         try{
@@ -75,8 +76,9 @@ public class MovieTrailerInteractor {
         }
     }
 
+
     //For favorite
-    public void saveFavorite(Integer id){
+    public void saveFavorite(Integer id, String posterPath, String title){
         try{
             Realm realm = application.getRealm();
             realm.beginTransaction();
@@ -87,6 +89,8 @@ public class MovieTrailerInteractor {
                 MovieRealm movieRealm = new MovieRealm();
                 movieRealm.setFavorite(true);
                 movieRealm.setId(id);
+                movieRealm.setPosterPath(posterPath);
+                movieRealm.setTitle(title);
                 realm.copyToRealm(movieRealm);
             }
             realm.commitTransaction();
@@ -97,5 +101,29 @@ public class MovieTrailerInteractor {
         }
     }
 
-
+//    public void showFavorite(){
+//        try{
+//            Realm realm = application.getRealm();
+//            realm.beginTransaction();
+//            RealmResults<MovieRealm> movieSelection = realm.where(MovieRealm.class).findAll();
+//            realm.commitTransaction();
+//            ResponseMovies responseMovies = new ResponseMovies();
+//            List<Result> lista = new ArrayList<>();
+//            Result mResult;
+//            for (MovieRealm movie : movieSelection){
+//                mResult = new Result();
+//                mResult.setId(movie.getId());
+//                mResult.setPosterPath(movie.getPosterPath());
+//                mResult.setTitle(movie.getTitle());
+//                lista.add(mResult);
+//            }
+//            responseMovies.setResults(lista);
+//            callback.onResponse(responseMovies,"");
+//
+//
+//        }catch(Exception e){
+//            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
+//            //  throw e;
+//        }
+//    }
 }

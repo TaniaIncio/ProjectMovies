@@ -183,7 +183,7 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     @OnClick(R.id.fragmentdetallemovie_fab_addfavorite)
     void onChangeStateFavorite(){
         try{
-            presenter.saveFavoriteMovie(detailMovieSelection.getId());
+            presenter.saveFavoriteMovie(detailMovieSelection.getId(), detailMovieSelection.getPosterPath(), detailMovieSelection.getTitle());
         }catch(Exception e){
             e.printStackTrace();
         }
