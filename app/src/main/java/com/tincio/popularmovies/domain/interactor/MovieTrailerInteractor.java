@@ -1,7 +1,4 @@
 package com.tincio.popularmovies.domain.interactor;
-/**
- * Created by tincio on 04/03/17.
- */
 
 public interface MovieTrailerInteractor {
 
@@ -11,7 +8,7 @@ public interface MovieTrailerInteractor {
     void getRequesListMovies(Integer id);
 
     //For favorite
-    void saveFavorite(Integer id);
+    void saveFavorite(Integer id, String posterPath, String title);
 
 
 }

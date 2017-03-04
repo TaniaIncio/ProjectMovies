@@ -111,13 +111,17 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     }
 
     public void setDetailMovie(Result detailMovie){
-        if(detailMovie!=null){
-            Float v_valoracion = Float.valueOf(detailMovie.getVoteAverage().toString());
-            if(v_valoracion > 0){
-                v_valoracion = v_valoracion /2;
-            }else{
-                v_valoracion = Float.valueOf(0);
+        if(detailMovie!=null ){
+            Float v_valoracion = new Float("0.0");
+            if(detailMovie.getVoteAverage()!=null){
+                 v_valoracion = Float.valueOf(detailMovie.getVoteAverage().toString());
+                if(v_valoracion > 0){
+                    v_valoracion = v_valoracion /2;
+                }else{
+                    v_valoracion = Float.valueOf(0);
+                }
             }
+
 
             detailMovieSelection = detailMovie;
             collapsingToolbarLayout.setTitle(detailMovie.getTitle());
@@ -201,7 +205,7 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     @OnClick(R.id.fragmentdetallemovie_fab_addfavorite)
     void onChangeStateFavorite(){
         try{
-            presenter.saveFavoriteMovie(detailMovieSelection.getId());
+            presenter.saveFavoriteMovie(detailMovieSelection.getId(), detailMovieSelection.getPosterPath(), detailMovieSelection.getTitle());
         }catch(Exception e){
             e.printStackTrace();
         }

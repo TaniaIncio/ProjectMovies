@@ -81,7 +81,7 @@ public class MovieTrailerWebServicesInteractor implements MovieTrailerInteractor
     }
 
     @Override
-    public void saveFavorite(Integer id) {
+    public void saveFavorite(Integer id, String posterPath, String title){
         try{
             Realm realm = application.getRealm();
             realm.beginTransaction();
@@ -92,6 +92,8 @@ public class MovieTrailerWebServicesInteractor implements MovieTrailerInteractor
                 MovieRealm movieRealm = new MovieRealm();
                 movieRealm.setFavorite(true);
                 movieRealm.setId(id);
+                movieRealm.setPosterPath(posterPath);
+                movieRealm.setTitle(title);
                 realm.copyToRealm(movieRealm);
             }
             realm.commitTransaction();
