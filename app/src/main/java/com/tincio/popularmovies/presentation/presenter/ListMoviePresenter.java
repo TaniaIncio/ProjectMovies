@@ -39,8 +39,8 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
 
     }
 
-    public void saveFavoriteMovie(Integer id){
-        movieInteractor.saveFavorite(id);
+    public void saveFavoriteMovie(Integer id, String posterPath, String title){
+        movieInteractor.saveFavorite(id, posterPath, title );
     }
 
     @Override
