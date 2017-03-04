@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
@@ -38,15 +39,16 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-
+    private Button btnIniciar;
     public LoginActivity() {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
-
+        btnIniciar= (Button)findViewById(R.id.btn_ingreso);
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.loginButton);
         loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
@@ -71,9 +73,20 @@ public class LoginActivity extends AppCompatActivity {
                                 // Application code
                                 try {
                                     String email = object.getString("email");
-                                    String birthday = object.getString("birthday");
+
                                     String id = object.getString("id");
                                     String gender = object.getString("gender");
+                                    String name =  object.getString("name");
+                                    Intent intent = new Intent(LoginActivity.this, DetalleUserActivity.class);
+                                    intent.putExtra("name",name);
+                                    intent.putExtra("id",id);
+                                    intent.putExtra("email",email);
+                                    intent.putExtra("gender",gender);
+                                    startActivity(intent);
+
+
+
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -121,5 +134,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
+        //
     }
 }

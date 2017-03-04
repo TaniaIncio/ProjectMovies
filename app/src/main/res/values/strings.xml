@@ -17,7 +17,7 @@
     <string name="id_order_one">popular</string>
     <string name="id_order_two">top_rated</string>
     <string name="id_order_three">Favoritos</string>
-    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="iniciar_sesion">Ingresar</string>
     <string name="facebook_app_id">953211428100826</string>
 
 </resources>

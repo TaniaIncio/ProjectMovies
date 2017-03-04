@@ -1,8 +1,11 @@
 package com.tincio.popularmovies.presentation.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,11 +33,21 @@ public class DetalleUserActivity extends AppCompatActivity {
         String email = getIntent().getExtras().getString("email");
         String ID =  getIntent().getExtras().getString("id");
 
+
+
         String imageURL = "http://graph.facebook.com/"+ID+"/picture?type=small";
         final TextView textoUser = (TextView) findViewById(R.id.micuenta_nombreusuario);
         final TextView micuenta_correo = (TextView) findViewById(R.id.micuenta_correo
         );
         final ImageView foto = (ImageView) findViewById(R.id.micuenta_imagen_usuario);
+        final Button btn = (Button) findViewById(R.id.click);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
+            }
+        });
 
         if (textoUser != null) {
             textoUser.setText(name);
