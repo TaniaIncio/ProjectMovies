@@ -66,6 +66,8 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     TextView txtPromedioVotosMovie;
     @BindView(R.id.contentscrolling_txt_datemovie)
     TextView dateMovie;
+    @BindView(R.id.titleTrailer)
+    TextView txtTituloTrailer;
     ProgressDialog progress;
 
     MovieTrailerPresenter presenter;
@@ -146,6 +148,15 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
 
     @Override
     public void showMovieTrailer(ResponseTrailersMovie detailMovie, String responseError) {
+        if(detailMovie == null){
+            txtTituloTrailer.setText("");
+        }else if(detailMovie.getResults().size()>1){
+            txtTituloTrailer.setText("Trailers");
+        }else if (detailMovie.getResults().size() == 1){
+            txtTituloTrailer.setText("Trailer");
+        }else {
+            txtTituloTrailer.setText("");
+        }
         adapterRecyclerDetailMovie = new AdapterRecyclerDetailMovie(detailMovie==null?null:detailMovie.getResults());
         recTrailers.setAdapter(adapterRecyclerDetailMovie);
         linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false);
