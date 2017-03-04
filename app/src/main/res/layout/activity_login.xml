@@ -90,6 +90,7 @@ tools:context="com.tincio.popularmovies.presentation.activity.LoginActivity">
             android:layout_height="match_parent"
             android:id="@+id/terminos_y_condiciones"
             android:text="Términos y condiciones"
+            android:visibility="gone"
             android:textColor="@android:color/white"/>
 
         <!--Olvide contraseña-->
@@ -115,7 +116,9 @@ tools:context="com.tincio.popularmovies.presentation.activity.LoginActivity">
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:paddingBottom="10dp"
+        android:paddingBottom="16dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
         android:paddingTop="10dp" />
 <android.support.v7.widget.AppCompatButton
     android:id="@+id/btn_ingreso"

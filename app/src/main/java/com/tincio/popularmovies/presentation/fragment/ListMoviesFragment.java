@@ -25,6 +25,7 @@ import com.tincio.popularmovies.data.services.response.Result;
 import com.tincio.popularmovies.presentation.adapter.AdapterRecyclerMovies;
 import com.tincio.popularmovies.presentation.presenter.ListMoviePresenter;
 import com.tincio.popularmovies.presentation.util.EndlessRecyclerOnScrollListener;
+import com.tincio.popularmovies.presentation.util.SlideInBottomAnimationAdapter;
 import com.tincio.popularmovies.presentation.util.Utils;
 import com.tincio.popularmovies.presentation.view.ListMovieView;
 
@@ -132,7 +133,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
         }
         if (CURRENT_PAGE == 1){
             adapterRecycler = new AdapterRecyclerMovies((responseMovies==null?null:(list==null?responseMovies.getResults():list)));
-            recImageMovie.setAdapter(adapterRecycler);
+            recImageMovie.setAdapter(new SlideInBottomAnimationAdapter(this.adapterRecycler));
         }else {
             adapterRecycler.setListMovies(list);
         }

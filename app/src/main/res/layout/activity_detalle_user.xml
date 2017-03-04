@@ -57,6 +57,25 @@
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="match_parent" android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/imagenbig"
+                />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="Siguiente
+
+                "/>
+
+        </LinearLayout>
 </LinearLayout>
 
 </LinearLayout>

@@ -48,7 +48,7 @@ public class DetalleUserActivity extends AppCompatActivity {
          //micuenta_correo
         Log.d("URL",imageURL);
 
-     //   Picasso.with(DetalleUserActivity.this).load(imageURL).placeholder(this.getResources().getDrawable(R.drawable.com_facebook_button_login_logo)).error(this.getResources().getDrawable(R.drawable.com_facebook_button_icon_blue)).into(foto);
+        Picasso.with(DetalleUserActivity.this).load(imageURL).placeholder(this.getResources().getDrawable(R.drawable.com_facebook_profile_picture_blank_square)).error(this.getResources().getDrawable(R.drawable.com_facebook_profile_picture_blank_square)).into(foto);
 
 
        // final ImageView img = (ImageView)
