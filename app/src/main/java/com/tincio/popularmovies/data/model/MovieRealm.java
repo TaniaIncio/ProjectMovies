@@ -15,6 +15,10 @@ public class MovieRealm extends RealmObject{
 
     private Integer id;
     private Boolean favorite;
+    private String posterPath;
+    private String title;
+    //falta titulo
+    //poster path
 
     public Integer getId() {
         return id;
@@ -30,5 +34,21 @@ public class MovieRealm extends RealmObject{
 
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
