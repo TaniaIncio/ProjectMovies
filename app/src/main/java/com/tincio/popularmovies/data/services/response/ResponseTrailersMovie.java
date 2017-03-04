@@ -11,6 +11,7 @@ public class ResponseTrailersMovie {
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("results")
     @Expose
     private List<ResultTrailer> results = new ArrayList<ResultTrailer>();

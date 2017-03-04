@@ -136,4 +136,12 @@ public class AdapterRecyclerMovies extends  RecyclerView.Adapter<AdapterRecycler
     public void updateItemList(Integer indice, Result movie){
         listMovies.set(indice, movie);
     }
+
+    public List<Result> getListMovies(){
+        return this.listMovies;
+    }
+    public void setListMovies(List<Result>  list){
+        this.listMovies.addAll(list);
+        notifyDataSetChanged();
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,8 +7,9 @@
     android:minHeight="?attr/listPreferredItemHeight"
     android:id="@+id/rowrecyclerdetalle_linear_nrotrailer"
     android:clickable="true"
-    android:background="@drawable/selector_row_recycler"
+    android:background="@color/colorAccent"
     android:paddingLeft="@dimen/margin_general_right_left">
+    android:background="@drawable/selector_row_recycler"
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +22,87 @@
         android:layout_marginLeft="@dimen/margin_general_right_left"
         android:textSize="@dimen/height_contentscrolling_listitem"
         android:id="@+id/rowrecyclerdetalle_txt_nombretrailer"
-        />
+        android:text="ccccccccccccccccc"/>
 
 </LinearLayout>
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:id="@+id/rowrecyclerdetalle_linear_nrotrailer"
+    android:clickable="true"
+    android:background="@color/colorAccent"
+    android:paddingLeft="@dimen/margin_general_right_left">
+<android.support.v7.widget.CardView
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvOrdenCancion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="48sp"
+                android:text="1"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rowrecyclerdetalle_txt_nombretrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                android:text="Musica"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/rowrecyclerdetalle_img_nrotrailer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/cardview_dark_background"
+                android:src="@android:drawable/ic_media_play" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+    </LinearLayout>
