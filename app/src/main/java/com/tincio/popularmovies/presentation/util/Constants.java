@@ -11,7 +11,9 @@ public class Constants {
     public static class serviceNames{
         public static String BASE_MOVIES = "http://api.themoviedb.org/3/movie/";
         public static String GET_IMAGE_MOVIES = "http://image.tmdb.org/t/p/w780";
-        public static String prueba= "xxxxxx"
+
+        public static String prueba2 = "sasasa";
+        public static String prueba= "xxxxxx";
         public static String GET_TRAILERS(Integer id){
             StringBuilder builderBase = new StringBuilder();
             builderBase.append(BASE_MOVIES);
