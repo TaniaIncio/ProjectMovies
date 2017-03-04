@@ -157,8 +157,10 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         if(i==0)
             presenter.callListMovie(getString(R.string.id_order_one));
-        else
+        else if(i==1)
             presenter.callListMovie(getString(R.string.id_order_two));
+        else
+            presenter.callListMovie(getString(R.string.id_order_three));
     }
 
     @Override
