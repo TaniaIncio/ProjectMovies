@@ -1,11 +1,5 @@
 package com.tincio.popularmovies.domain.interactor;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
 import com.tincio.popularmovies.R;
 import com.tincio.popularmovies.data.model.MovieRealm;
 import com.tincio.popularmovies.data.services.response.ResponseMovies;
