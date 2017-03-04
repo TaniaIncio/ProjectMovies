@@ -13,7 +13,7 @@
     <!--names of arrays-->
     <string name="order_one">Most popular</string>
     <string name="order_two">Highest rated</string>
-    <string name="order_three">Favorit</string>
+    <string name="order_three">Favorite</string>
     <string name="id_order_one">popular</string>
     <string name="id_order_two">top_rated</string>
     <string name="id_order_three">Favoritos</string>
