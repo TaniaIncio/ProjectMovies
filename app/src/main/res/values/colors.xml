@@ -9,4 +9,45 @@
     <color name="grey_400_trans">#BFBDBDBD</color>
     <color name="green_movies">#007362</color>
     <color name="green_movies_dark">#004534</color>
+
+    <color name="naranja">#ffa800</color>
+    <color name="naranja_claro">#f2be4a</color>
+
+    <color name="azul_boton_saltar">#001a4c</color>
+
+    <color name="celeste_boton">#008be8</color><!--para botones y configuracion -->
+    <color name="celeste_etiquetas">#0187fa</color>
+
+    <color name="orange_button_light">#ffA000</color>
+    <color name="orange_button_dark">#ff8200</color>
+
+    <color name="gris">#626262</color>
+    <color name="gris_claro">#B6B6B6</color>
+
+    <color name="rojo">#ff594d</color>
+    <color name="rojo_claro">#e86767</color>
+
+    <color name="prueba_texto">#727272</color>
+    <color name="prueba_texto_negrita">#212121</color>
+    <color name="prueba_fondo">#ffa800</color>
+
+    <color name="prueba_seleccion">#FFCDD2</color>
+    <color name="icons_nuevo">#686868</color>
+    <color name="text_terminos_condiciones">#707070</color>
+    <color name="terminos_y_condiciones">#333</color>
+    <color name="textos_titulo">#4A546F</color>
+    <color name="color_etiqueta">#FF9B00</color>
+    <color name="linear_Bottom_CardView">#30707070</color>
+    <color name="transparente">#00c3c3c3</color>
+    <color name="slidecompromisos">#e33e3d3d</color>
+    <color name="naranja_gym">#ff9b00</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="green_movies_1">#ACDA91</color>
+
+    <color name="grayRatingBar">#C6C6C6</color>
+    <color name="yellowRatingBar">#f8c81c</color>
+
 </resources>

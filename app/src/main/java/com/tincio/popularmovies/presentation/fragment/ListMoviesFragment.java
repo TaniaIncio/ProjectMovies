@@ -7,14 +7,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.tincio.popularmovies.R;
 import com.tincio.popularmovies.data.services.response.ResponseMovies;
 import com.tincio.popularmovies.data.services.response.Result;
@@ -24,6 +28,7 @@ import com.tincio.popularmovies.presentation.util.EndlessRecyclerOnScrollListene
 import com.tincio.popularmovies.presentation.util.Utils;
 import com.tincio.popularmovies.presentation.view.ListMovieView;
 
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -52,6 +57,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
     Integer CURRENT_PAGE = 1;
 
     public ListMoviesFragment() {
+        // Required empty public constructor
     }
 
 
@@ -79,10 +85,12 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
             recImageMovie.addOnScrollListener(new EndlessRecyclerOnScrollListener(gridLayoutManager) {
                 @Override
                 public void onLoadMore(int current_page) {
+                    Log.v(TAG + "currentpage", "currentpage " + current_page);
                     CURRENT_PAGE  = current_page;
                     if(!OPTION.equals(getString(R.string.id_order_three))){
                         presenter.callListMovie(OPTION,current_page);
                     }
+
                 }
             });
         } catch (Exception e) {
@@ -138,7 +146,11 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
                 positionSelection = position;
                 if(getResources().getBoolean(R.bool.has_two_panes)){
                     DetalleMovieFragment fragment = (DetalleMovieFragment)getFragmentManager().findFragmentByTag(DetalleMovieFragment.TAG);
-                    fragment.setDetailMovie(movie);
+                    if(movie == null){
+                        Toast.makeText(getContext(),"No existe detalle para esta pelicula", Toast.LENGTH_LONG).show();
+                    }else {
+                        fragment.setDetailMovie(movie);
+                    }
                 }else
                     changeFragment(movie);
                 }
@@ -156,6 +168,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
                     DetalleMovieFragment fragment = (DetalleMovieFragment)getFragmentManager().findFragmentByTag(DetalleMovieFragment.TAG);
                     fragment.showResultFavorite(getString(R.string.response_succesfull));
                 }
+
             }
         });
     }
