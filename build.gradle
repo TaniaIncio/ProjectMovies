@@ -27,3 +27,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    supportLibraryVersion = '24.0.0'
+    butterknifeVersion = '8.4.0'
+    retrofitVersion = '2.1.0'
+    okhttpVersion = '3.3.1'
+    gsonVersion = '2.7'
+    picassoVersion = '2.5.2'
+    facebookSdkVersion = '4.10.0'
+}

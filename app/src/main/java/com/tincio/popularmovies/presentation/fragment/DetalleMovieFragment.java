@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -53,8 +54,20 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     ImageView imgMovie;
     @BindView(R.id.contentscrolling_txt_descriptionmovie)
     TextView txtDescripcionMovie;
+    @BindView(R.id.contentscrolling_txt_languagemovie)
+    TextView txtLenguageMovie;
+    @BindView(R.id.contentscrolling_txt_popularitymovie)
+    TextView txtPopularidadMovie;
+    @BindView(R.id.contentscrolling_txt_countvotesmovie)
+    TextView txtCantidadVotosMovie;
+    @BindView(R.id.appCompatRatingBar2)
+    AppCompatRatingBar txtValoracionMovie;
+    @BindView(R.id.contentscrolling_txt_averagevotesmovie)
+    TextView txtPromedioVotosMovie;
     @BindView(R.id.contentscrolling_txt_datemovie)
     TextView dateMovie;
+    @BindView(R.id.titleTrailer)
+    TextView txtTituloTrailer;
     ProgressDialog progress;
 
     MovieTrailerPresenter presenter;
@@ -99,10 +112,22 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
 
     public void setDetailMovie(Result detailMovie){
         if(detailMovie!=null){
+            Float v_valoracion = Float.valueOf(detailMovie.getVoteAverage().toString());
+            if(v_valoracion > 0){
+                v_valoracion = v_valoracion /2;
+            }else{
+                v_valoracion = Float.valueOf(0);
+            }
+
             detailMovieSelection = detailMovie;
             collapsingToolbarLayout.setTitle(detailMovie.getTitle());
             Picasso.with(getActivity()).load(Constants.serviceNames.GET_IMAGE_MOVIES+detailMovie.getBackdropPath()).into(imgMovie);
             txtDescripcionMovie.setText(detailMovie.getOverview());
+            txtLenguageMovie.setText(detailMovie.getOriginalLanguage());
+            txtPopularidadMovie.setText(String.valueOf(detailMovie.getPopularity()));
+            txtCantidadVotosMovie.setText(String.valueOf(detailMovie.getVoteCount()));
+            txtValoracionMovie.setRating(v_valoracion);
+            txtPromedioVotosMovie.setText(String.valueOf(v_valoracion));
             dateMovie.setText(detailMovie.getReleaseDate());
             fabAddFavorito.setImageDrawable(Utils.getDrawableByName(getContext(),detailMovie.getFavorito()?favoritoOn:favoritoOff));
             fabAddFavorito.setTag(detailMovie.getFavorito()?favoritoOn:favoritoOff);
@@ -123,6 +148,15 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
 
     @Override
     public void showMovieTrailer(ResponseTrailersMovie detailMovie, String responseError) {
+        if(detailMovie == null){
+            txtTituloTrailer.setText("");
+        }else if(detailMovie.getResults().size()>1){
+            txtTituloTrailer.setText("Trailers");
+        }else if (detailMovie.getResults().size() == 1){
+            txtTituloTrailer.setText("Trailer");
+        }else {
+            txtTituloTrailer.setText("");
+        }
         adapterRecyclerDetailMovie = new AdapterRecyclerDetailMovie(detailMovie==null?null:detailMovie.getResults());
         recTrailers.setAdapter(adapterRecyclerDetailMovie);
         linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL, false);

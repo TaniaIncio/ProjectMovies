@@ -39,7 +39,7 @@ public class AdapterRecyclerDetailMovie extends RecyclerView.Adapter<AdapterRecy
         holder.txtNombreTrailer.setText("Trailer "+(position+1));
         holder.txtTituloTrailer.setText(listTrailer.get(position).getName().toString());
         holder.txtSitioTrailer.setText(listTrailer.get(position).getSite().toString());
-        holder.txtTamanioTrailer.setText(listTrailer.get(position).getSize().toString());
+        holder.txtTamanioTrailer.setText(listTrailer.get(position).getSize().toString()+" p");
     }
 
     @Override

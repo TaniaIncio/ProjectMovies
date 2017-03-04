@@ -14,5 +14,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grayRatingBar</item>
+        <item name="colorControlActivated">@color/yellowRatingBar</item>
+        <item name="actionBarSize">?android:attr/actionBarSize</item>
+        <item name="android:stepSize">0.5</item>
+    </style>
 </resources>
