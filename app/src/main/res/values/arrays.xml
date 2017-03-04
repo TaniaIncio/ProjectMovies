@@ -3,5 +3,6 @@
     <string-array name="order_movies">
         <item>@string/order_one</item>
         <item>@string/order_two</item>
+        <item>@string/order_three</item>
     </string-array>
 </resources>
