@@ -30,9 +30,9 @@ public class ListMovieInteractor {
         this.callback = callback;
     }
 
-    public void callListMovies(String option){
+    public void callListMovies(String option, int page){
         try{
-            getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option));
+            getRequesListMovies(Constants.serviceNames.GET_LIST_MOVIES(option, page));
         }catch(Exception e){
             throw e;
         }
@@ -105,6 +105,20 @@ public class ListMovieInteractor {
                 movieRealm.setId(id);
                 realm.copyToRealm(movieRealm);
             }
+            realm.commitTransaction();
+            callback.onResponseFavorite(application.getString(R.string.response_succesfull));
+        }catch(Exception e){
+            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
+            //  throw e;
+        }
+    }
+
+    public void ShowFavorite(Integer id){
+        try{
+            Realm realm = application.getRealm();
+            realm.beginTransaction();
+            MovieRealm movieSelection = realm.where(MovieRealm.class).equalTo("id",id).findFirst();
+
             realm.commitTransaction();
             callback.onResponseFavorite(application.getString(R.string.response_succesfull));
         }catch(Exception e){
