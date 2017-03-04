@@ -1,6 +1,7 @@
 package com.tincio.popularmovies.presentation.util;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.BufferedReader;
 
@@ -11,6 +12,7 @@ public class Constants {
     public static String param_page = "page";
     public static class serviceNames{
         public static String BASE_MOVIES = "http://api.themoviedb.org/3/movie/";
+        public static String GET_MOVIES = "popular";
         public static String GET_IMAGE_MOVIES = "http://image.tmdb.org/t/p/w780";
 
         public static String GET_TRAILERS(Integer id){
@@ -31,6 +33,7 @@ public class Constants {
             Uri builUri = Uri.parse(builderBase.toString()).buildUpon()
                     .appendQueryParameter(param,KEY)
                     .appendQueryParameter(param_page,String.valueOf(page)).build();
+            Log.i("taggg",builUri.toString());
             return builUri.toString();
         }
     }
