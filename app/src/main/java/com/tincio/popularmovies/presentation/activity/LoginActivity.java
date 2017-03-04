@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), "Error Login", Toast.LENGTH_SHORT).show();
             }
+
         });
 
 
