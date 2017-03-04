@@ -60,8 +60,8 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
     TextView txtPopularidadMovie;
     @BindView(R.id.contentscrolling_txt_countvotesmovie)
     TextView txtCantidadVotosMovie;
-//    @BindView(R.id.appCompatRatingBar2)
-//    AppCompatRatingBar txtValoracionMovie;
+    @BindView(R.id.appCompatRatingBar2)
+    AppCompatRatingBar txtValoracionMovie;
     @BindView(R.id.contentscrolling_txt_averagevotesmovie)
     TextView txtPromedioVotosMovie;
     @BindView(R.id.contentscrolling_txt_datemovie)
@@ -110,6 +110,13 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
 
     public void setDetailMovie(Result detailMovie){
         if(detailMovie!=null){
+            Float v_valoracion = Float.valueOf(detailMovie.getVoteAverage().toString());
+            if(v_valoracion > 0){
+                v_valoracion = v_valoracion /2;
+            }else{
+                v_valoracion = Float.valueOf(0);
+            }
+
             detailMovieSelection = detailMovie;
             collapsingToolbarLayout.setTitle(detailMovie.getTitle());
             Picasso.with(getActivity()).load(Constants.serviceNames.GET_IMAGE_MOVIES+detailMovie.getBackdropPath()).into(imgMovie);
@@ -117,8 +124,8 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
             txtLenguageMovie.setText(detailMovie.getOriginalLanguage());
             txtPopularidadMovie.setText(String.valueOf(detailMovie.getPopularity()));
             txtCantidadVotosMovie.setText(String.valueOf(detailMovie.getVoteCount()));
-            //txtValoracionMovie.setRating(Float.valueOf(detailMovie.getVoteAverage().toString()));
-            txtPromedioVotosMovie.setText(String.valueOf(detailMovie.getVoteAverage()));
+            txtValoracionMovie.setRating(v_valoracion);
+            txtPromedioVotosMovie.setText(String.valueOf(v_valoracion));
             dateMovie.setText(detailMovie.getReleaseDate());
             fabAddFavorito.setImageDrawable(Utils.getDrawableByName(getContext(),detailMovie.getFavorito()?favoritoOn:favoritoOff));
             fabAddFavorito.setTag(detailMovie.getFavorito()?favoritoOn:favoritoOff);
