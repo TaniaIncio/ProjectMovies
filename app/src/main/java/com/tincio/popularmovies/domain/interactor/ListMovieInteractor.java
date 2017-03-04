@@ -113,4 +113,18 @@ public class ListMovieInteractor {
         }
     }
 
+    public void ShowFavorite(Integer id){
+        try{
+            Realm realm = application.getRealm();
+            realm.beginTransaction();
+            MovieRealm movieSelection = realm.where(MovieRealm.class).equalTo("id",id).findFirst();
+
+            realm.commitTransaction();
+            callback.onResponseFavorite(application.getString(R.string.response_succesfull));
+        }catch(Exception e){
+            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
+            //  throw e;
+        }
+    }
+
 }
