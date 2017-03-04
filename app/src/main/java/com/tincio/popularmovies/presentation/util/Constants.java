@@ -22,6 +22,7 @@ public class Constants {
             builderBase.append("/videos?");
             Uri builUri = Uri.parse(builderBase.toString()).buildUpon()
                     .appendQueryParameter(param,KEY).build();
+            Log.i("taggg",builUri.toString());
             return builUri.toString();
         }
 
@@ -33,7 +34,7 @@ public class Constants {
             Uri builUri = Uri.parse(builderBase.toString()).buildUpon()
                     .appendQueryParameter(param,KEY)
                     .appendQueryParameter(param_page,String.valueOf(page)).build();
-            Log.i("taggg",builUri.toString());
+
             return builUri.toString();
         }
     }

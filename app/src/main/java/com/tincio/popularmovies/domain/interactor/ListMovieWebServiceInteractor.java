@@ -80,12 +80,13 @@ public class ListMovieWebServiceInteractor implements ListMovieInteractor{
 
                     @Override
                     public void onFailure(Call<ResponseMovies> call, Throwable t) {
-                        Log.i("taggg ", t.getMessage());
+                        callback.onResponse(null, t.getMessage());
                     }
                 });
             }
         }catch(Exception e){
-            throw e;
+            callback.onResponse(null, e.getMessage());
+            //throw e;
         }
     }
 
