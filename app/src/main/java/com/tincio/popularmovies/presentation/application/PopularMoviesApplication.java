@@ -2,16 +2,12 @@ package com.tincio.popularmovies.presentation.application;
 
 import android.app.Application;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 public class PopularMoviesApplication extends Application {
 
-
-    RequestQueue requestQueue;
     public static PopularMoviesApplication mApplication;
     Realm realm;
 
@@ -19,27 +15,6 @@ public class PopularMoviesApplication extends Application {
     public void onCreate() {
         super.onCreate();
         this.mApplication = this;
-    }
-
-    public RequestQueue getRequestQueue(){
-        try{
-            if(requestQueue == null){
-                requestQueue = Volley.newRequestQueue(getApplicationContext());
-            }
-        }catch(Exception e){
-            throw e;
-        }
-        return requestQueue;
-    }
-
-    public void cancelPendingRequest(Object tag){
-        try{
-            if(requestQueue !=null){
-                requestQueue.cancelAll(tag);
-            }
-        }catch(Exception e){
-            throw e;
-        }
     }
 
     public Realm getRealm(){

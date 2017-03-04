@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.tincio.popularmovies.R;
 import com.tincio.popularmovies.data.services.response.ResponseMovies;
@@ -54,6 +55,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
     Spinner spinnerOrderMovies;
     String OPTION;
     Integer CURRENT_PAGE = 1;
+
     public ListMoviesFragment() {
         // Required empty public constructor
     }
@@ -144,7 +146,11 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
                 positionSelection = position;
                 if(getResources().getBoolean(R.bool.has_two_panes)){
                     DetalleMovieFragment fragment = (DetalleMovieFragment)getFragmentManager().findFragmentByTag(DetalleMovieFragment.TAG);
-                    fragment.setDetailMovie(movie);
+                    if(movie == null){
+                        Toast.makeText(getContext(),"No existe detalle para esta pelicula", Toast.LENGTH_LONG).show();
+                    }else {
+                        fragment.setDetailMovie(movie);
+                    }
                 }else
                     changeFragment(movie);
                 }

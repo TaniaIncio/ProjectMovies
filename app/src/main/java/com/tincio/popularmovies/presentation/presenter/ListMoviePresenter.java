@@ -3,6 +3,7 @@ package com.tincio.popularmovies.presentation.presenter;
 import com.tincio.popularmovies.data.services.response.ResponseMovies;
 import com.tincio.popularmovies.domain.callback.ListMovieCallback;
 import com.tincio.popularmovies.domain.interactor.ListMovieInteractor;
+import com.tincio.popularmovies.domain.interactor.ListMovieWebServiceInteractor;
 import com.tincio.popularmovies.presentation.view.ListMovieView;
 
 
@@ -14,7 +15,7 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
     @Override
     public void setView(ListMovieView view) {
         this.view = view;
-        movieInteractor = new ListMovieInteractor(this);
+        movieInteractor = new ListMovieWebServiceInteractor(this);
     }
 
     @Override

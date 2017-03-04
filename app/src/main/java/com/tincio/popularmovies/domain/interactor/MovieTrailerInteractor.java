@@ -27,103 +27,15 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MovieTrailerInteractor {
-
-    MovieTrailerCallback callback;
-    public int TIMEOUT = 5000;
-    PopularMoviesApplication application = PopularMoviesApplication.mApplication;
-    public MovieTrailerInteractor(MovieTrailerCallback callback){
-        this.callback = callback;
-    }
-
-    public void getMovieTrailers(Integer id){
-        try{
-                getRequesListMovies(Constants.serviceNames.GET_TRAILERS(id));
-        }catch(Exception e){
-            throw e;
-        }
-    }
+public interface MovieTrailerInteractor {
 
 
-    void getRequesListMovies(String url) {
-        try{
+    void getMovieTrailers(Integer id);
 
-            if (application != null) {
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                        url,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                Gson gson = new Gson();
-                                ResponseTrailersMovie responseMovies = gson.fromJson(response.toString(), ResponseTrailersMovie.class);
-                                callback.onResponse(responseMovies);
-
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                callback.onResponse(null, error.getMessage());
-                            }
-                        });
-                jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                        TIMEOUT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-                application.getRequestQueue().add(jsonObjectRequest);
-            }
-        }catch(Exception e){
-            throw e;
-        }
-    }
-
+    void getRequesListMovies(Integer id);
 
     //For favorite
-    public void saveFavorite(Integer id, String posterPath, String title){
-        try{
-            Realm realm = application.getRealm();
-            realm.beginTransaction();
-            MovieRealm movieSelection = realm.where(MovieRealm.class).equalTo("id",id).findFirst();
-            if(movieSelection!=null){
-                movieSelection.setFavorite(!(movieSelection.getFavorite()==null?false:movieSelection.getFavorite()));
-            }else{
-                MovieRealm movieRealm = new MovieRealm();
-                movieRealm.setFavorite(true);
-                movieRealm.setId(id);
-                movieRealm.setPosterPath(posterPath);
-                movieRealm.setTitle(title);
-                realm.copyToRealm(movieRealm);
-            }
-            realm.commitTransaction();
-            callback.onResponseFavorite(application.getString(R.string.response_succesfull));
-        }catch(Exception e){
-            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
-            //  throw e;
-        }
-    }
+    void saveFavorite(Integer id);
 
-//    public void showFavorite(){
-//        try{
-//            Realm realm = application.getRealm();
-//            realm.beginTransaction();
-//            RealmResults<MovieRealm> movieSelection = realm.where(MovieRealm.class).findAll();
-//            realm.commitTransaction();
-//            ResponseMovies responseMovies = new ResponseMovies();
-//            List<Result> lista = new ArrayList<>();
-//            Result mResult;
-//            for (MovieRealm movie : movieSelection){
-//                mResult = new Result();
-//                mResult.setId(movie.getId());
-//                mResult.setPosterPath(movie.getPosterPath());
-//                mResult.setTitle(movie.getTitle());
-//                lista.add(mResult);
-//            }
-//            responseMovies.setResults(lista);
-//            callback.onResponse(responseMovies,"");
-//
-//
-//        }catch(Exception e){
-//            callback.onResponseFavorite(application.getString(R.string.response_error)+e.getMessage());
-//            //  throw e;
-//        }
-//    }
+
 }
