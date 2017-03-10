@@ -89,6 +89,7 @@ public class DetalleUserActivity extends AppCompatActivity implements DetalleMov
         if (message==getResources().getString(R.string.response_succesfull)){
             Intent intent = new Intent(DetalleUserActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }else{
             Log.d("errorCloseSessionDB",message);
         }

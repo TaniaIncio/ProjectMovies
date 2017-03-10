@@ -24,6 +24,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.tincio.popularmovies.R;
@@ -52,18 +53,25 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        FacebookSdk.sdkInitialize(getApplicationContext());
         presenter = new UserMoviePresenter();
         presenter.setView(this);
+        presenter.getUser();
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_login);
         btnIniciar= (Button)findViewById(R.id.btn_ingreso);
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.loginButton);
         loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
 
-
+        btnIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
@@ -95,7 +103,9 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
                 parameters.putString("fields", "id,name,email,gender,birthday");
                 request.setParameters(parameters);
                 request.executeAsync();
+
             }
+
 
             @Override
             public void onCancel() {
@@ -145,6 +155,8 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
                  if (user!=null){
                      Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                      startActivity(intent);
+                 }else{
+                     LoginManager.getInstance().logOut();
                  }
     }
 
