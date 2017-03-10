@@ -55,6 +55,15 @@
                     android:textColor="@color/naranja"
                     android:text="Correo Eléctronico"
                     android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/cumpleannios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/naranja"
+                    android:text="cumpleaños"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"/>
+
             </LinearLayout>
         </LinearLayout>
 
@@ -65,9 +74,20 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="5"
                 android:background="@mipmap/imagenbig"
                 android:id="@+id/click"
+                android:text="Entrar"
+                android:textColor="@color/azul_boton_saltar"
                 />
+            <Button
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:text="SALIR"
+                android:id="@+id/btn_cerrar_session"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/azul_boton_saltar"
+                android:layout_height="100dp" />
 
 
         </LinearLayout>

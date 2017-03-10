@@ -77,6 +77,7 @@ public class DetalleMovieFragment extends Fragment implements MovieTrailerView {
 
     public static String TAG = DetalleMovieFragment.class.getSimpleName();
     public DetalleMovieFragment() {
+
     }
 
 

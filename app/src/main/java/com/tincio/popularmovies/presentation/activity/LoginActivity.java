@@ -27,6 +27,9 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.tincio.popularmovies.R;
+import com.tincio.popularmovies.data.model.UserRealm;
+import com.tincio.popularmovies.presentation.presenter.UserMoviePresenter;
+import com.tincio.popularmovies.presentation.view.UserMovieView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,17 +38,24 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements UserMovieView{
 
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private Button btnIniciar;
+
+    UserMoviePresenter presenter;
     public LoginActivity() {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        presenter = new UserMoviePresenter();
+        presenter.setView(this);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         btnIniciar= (Button)findViewById(R.id.btn_ingreso);
@@ -55,10 +65,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-
-
-
-            //https://graph.facebook.com/" + userID + "/picture?type=large
 
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -72,21 +78,13 @@ public class LoginActivity extends AppCompatActivity {
 
                                 // Application code
                                 try {
-                                    String email = object.getString("email");
-
-                                    String id = object.getString("id");
-                                    String gender = object.getString("gender");
-                                    String name =  object.getString("name");
-                                    Intent intent = new Intent(LoginActivity.this, DetalleUserActivity.class);
-                                    intent.putExtra("name",name);
-                                    intent.putExtra("id",id);
-                                    intent.putExtra("email",email);
-                                    intent.putExtra("gender",gender);
-                                    startActivity(intent);
-
-
-
-
+                                    UserRealm user = new UserRealm();
+                                    user.setName(object.getString("name"));
+                                    user.setId(object.getString("id"));
+                                    user.setGenere(object.getString("gender"));
+                                    user.setEmail(object.getString("email"));
+                                    user.setBirthday(object.getString("birthday"));
+                                    presenter.saveUser(user);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -139,12 +137,34 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        btnIniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            }
-        });
-        //
+        presenter.getUser();
+    }
+
+    @Override
+    public void showUser(UserRealm user, String responseError) {
+                 if (user!=null){
+                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                     startActivity(intent);
+                 }
+    }
+
+    @Override
+    public void saveUser(String response) {
+        Log.d("prueba",response);
+        if(response==getResources().getString(R.string.response_succesfull)){
+            Intent intent = new Intent(LoginActivity.this, DetalleUserActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void showLoading() {
+        Log.d("cargando","Cargando");
+    }
+
+    @Override
+    public void closeLoading() {
+        Log.d("Guardado","Data ya guardada");
     }
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:id="@+id/activity_splash"
+android:layout_height="match_parent"
+tools:context="com.tincio.popularmovies.presentation.activity.SplashActivity"
+    >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/background_gridlayout"/>
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:id="@+id/imageView"
+        android:src="@mipmap/icon_movie"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/txt_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Problemas de conexion"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:visibility="invisible"
+
+        android:layout_alignParentBottom="true"
+
+        />
+
+
+
+</RelativeLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+

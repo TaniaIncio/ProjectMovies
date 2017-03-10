@@ -19,7 +19,7 @@ public class ListMoviePresenter implements MvpPresenter<ListMovieView>, ListMovi
     }
 
     @Override
-    public void detachView() {
+    public  void detachView() {
         view = null;
     }
 

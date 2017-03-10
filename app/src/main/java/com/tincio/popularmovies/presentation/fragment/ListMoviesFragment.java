@@ -2,6 +2,7 @@ package com.tincio.popularmovies.presentation.fragment;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 import com.tincio.popularmovies.R;
 import com.tincio.popularmovies.data.services.response.ResponseMovies;
 import com.tincio.popularmovies.data.services.response.Result;
+import com.tincio.popularmovies.presentation.activity.DetalleUserActivity;
+import com.tincio.popularmovies.presentation.activity.MainActivity;
 import com.tincio.popularmovies.presentation.adapter.AdapterRecyclerMovies;
 import com.tincio.popularmovies.presentation.presenter.ListMoviePresenter;
 import com.tincio.popularmovies.presentation.util.EndlessRecyclerOnScrollListener;
@@ -49,7 +52,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
     AdapterRecyclerMovies adapterRecycler;
     private Unbinder unbinder;
     ProgressDialog progress;
-    ListMoviePresenter presenter;
+    ListMoviePresenter presenter; //comunicar con la DB
     Integer positionSelection;
     Result movieSelection;
     @BindView(R.id.spinner_order_movies)
@@ -66,6 +69,7 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view= inflater.inflate(R.layout.fragment_list_movies, container, false);
         unbinder=ButterKnife.bind(this,view);
         presenter = new ListMoviePresenter();
@@ -123,6 +127,8 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
 
     }
 
+
+    //lo que devuelve el
     @Override
     public void showListMovies(ResponseMovies responseMovies, String responseError) {
         List<Result> list =null;
@@ -206,9 +212,12 @@ public class ListMoviesFragment extends Fragment implements ListMovieView, Adapt
             presenter.callListMovie(getString(R.string.id_order_two),CURRENT_PAGE);
             OPTION = getString(R.string.id_order_two);
         }
-        else {
+        else if(i==2){
             presenter.callListMovie(getString(R.string.id_order_three),CURRENT_PAGE);
             OPTION = getString(R.string.id_order_three);
+        }else {
+            Intent intent = new Intent(getActivity(), DetalleUserActivity.class);
+            startActivity(intent);
         }
     }
 

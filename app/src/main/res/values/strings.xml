@@ -14,10 +14,20 @@
     <string name="order_one">Most popular</string>
     <string name="order_two">Highest rated</string>
     <string name="order_three">Favorite</string>
+    <string name="view_detalle">Detalle user</string>
+
     <string name="id_order_one">popular</string>
     <string name="id_order_two">top_rated</string>
     <string name="id_order_three">Favoritos</string>
     <string name="iniciar_sesion">Ingresar</string>
+    <string name="fail_save">FailSave</string>
+    <string name="user_exits">UsuarioExiste</string>
+    <string name="user_empty">UsuarioVacio</string>
+    <string name="error_save_user_db">ErrorDbUserSave</string>
+    <string name="error_session_close">ErrorCloseUser</string>
+
+
     <string name="facebook_app_id">953211428100826</string>
+
 
 </resources>
