@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
+import android.renderscript.ScriptGroup;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -44,6 +46,8 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private Button btnIniciar;
+    private EditText user_input;
+    private  EditText user_contrasenia;
 
     UserMoviePresenter presenter;
     public LoginActivity() {
@@ -63,13 +67,29 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
         btnIniciar= (Button)findViewById(R.id.btn_ingreso);
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.loginButton);
+        user_contrasenia = (EditText) findViewById(R.id.input_contrasenia);
+        user_input = (EditText) findViewById(R.id.input_iniciar_sesion);
         loginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
+                if(validarUsuario()) {
+
+                    try {
+                        UserRealm user = new UserRealm();
+                        user.setName(user_input.getText().toString());
+                        user.setId("");
+                        user.setGenere("");
+                        user.setEmail("");
+                        user.setBirthday("");
+                        presenter.saveUser(user);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
             }
         });
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -138,6 +158,19 @@ public class LoginActivity extends AppCompatActivity implements UserMovieView{
 
         }
     }
+
+    private boolean validarUsuario(){
+
+        if(!this.user_input.getText().toString().isEmpty() && !this.user_contrasenia.getText().toString().isEmpty()){
+                return  true;
+        }else{
+            Toast.makeText(getApplicationContext(),"Usuario y Contraseña Requeridos",Toast.LENGTH_SHORT).show();
+             return  false;
+        }
+
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

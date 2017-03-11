@@ -99,7 +99,7 @@ tools:context="com.tincio.popularmovies.presentation.activity.LoginActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-
+            android:visibility="invisible"
             android:singleLine="true"
             android:padding="12dp"
             android:paddingTop="18dp"
